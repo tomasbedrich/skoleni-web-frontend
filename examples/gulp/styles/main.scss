@@ -1,0 +1,9 @@
+@import "_background";
+
+a {
+    color: red;
+    transition: all .5s ease-in-out;
+    &:hover {
+        color: orange;
+    }
+}

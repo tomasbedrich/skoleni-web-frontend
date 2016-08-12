@@ -1,0 +1,18 @@
+$theme-color: red;
+
+@mixin animated {
+    transition: all .2s ease-in-out;
+}
+
+a {
+    // TODO: Set color using a variable.
+    // TODO: Use "animated" mixin.
+}
+
+a:hover {
+    // TODO: Set darker :hover color using a "mix()" function.
+}
+
+// TODO: Style nested lists:
+// 1st level - bold text, theme color
+// 2nd level - normal text, normal color, inline, without bullets

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Modernizr notifications demo</title>
+    <style>
+
+    .good { background-color: green; color: white; }
+    .bad { background-color: red; color: white; }
+
+    /* TODO: Pick the right label to display. */
+
+    </style>
+</head>
+<body>
+
+    <p>
+    Your brower
+    <span class="good">supports</span>
+    <span class="bad">doesn't support</span>
+    notification.
+    </p>
+
+
+    <script src="modernizr-custom.js"></script>
+    <script>
+
+        // TODO: Check if current browser supports notification API.
+        if (false) {
+
+            // request permission and show notification
+            Notification.requestPermission().then(function (result) {
+                if (result === 'granted') {
+                    return new Notification('It works!');
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>
