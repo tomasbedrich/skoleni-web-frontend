@@ -1,0 +1,25 @@
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+}
+.task {
+    background-color: lightgreen;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+h1, h2 {
+    color: rgb(0, 0, 120);
+}
+@media screen and (min-width: 400px) and (max-width: 800px) {
+    .content, .sidebar {
+        box-sizing: border-box;
+        float: left;
+        padding: .5rem;
+    }
+    .content {
+        width: 70%;
+    }
+    .sidebar {
+        width: 30%;
+    }
+}
