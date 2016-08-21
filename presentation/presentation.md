@@ -247,33 +247,296 @@ a:hover {
 # Mezistupně
 
 ---
+## [Can I use ...?](http://caniuse.com/)
+= Jaké technologie lze použít pro různé verze prohlížečů.
 
-- `` – item
-- `` – item
-- `` – item
-- `` – item
+---
+## Prefixy
+    background: black; /* fallback */
+    background: -webkit-linear-gradient(top, black 0%, white 100%); /* Chrome10-25,Safari5.1-6 */
+    background:    -moz-linear-gradient(top, black 0%, white 100%); /* FF3.6-15 */
+    background:         linear-gradient(to bottom, black 0%, white 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#ffffff', GradientType=0); /* IE6-9 */
 
-=== <!-- .slide: data-background="rgb(80, 40, 160)" -->
+---
+## Polyfilly, Shimy
+= Dovolují používat jednotné API napříč prohlížeči.
+
+- [HTML5 Shiv](https://github.com/aFarkas/html5shiv) (HTML5 v IE6-9)
+- [MathJax](https://www.mathjax.org/) (MathML v nonFF)
+
+---
+## [Modernizr](https://modernizr.com/)
+- Detekuje podporu technologií (CSS třídy + JS objekt).
+- Media query v JS.
+
+--- <!-- .slide: data-background="rgb(80, 40, 160)" -->
 # Hands-on!
 `examples/modernizr`
 
-=== <!-- .slide: data-background="rgb(80, 40, 160)" -->
+=== <!-- .slide: data-background="rgb(40, 220, 220)" -->
+# SASS
+
+---
+= CSS preprocesor
+<p class="fragment">`styles.scss` → **kompilace** → `styles.css`</p>
+
+---
+## Proměnné
+Opakují se barvy, rozměry, ...?
+
+**1. definice**
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```scss
+$brand-primary: #ffff00;
+$large-space: 20px;
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+**2. použití**
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+```scss
+background-color: $brand-primary;
+padding: 0 $large-space;
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+
+---
+## Import
+= Skládání souborů při kompilaci.
+<p class="fragment" data-fragment-index="1">≠ Importy v CSS (HTTP požadavky).</p>
+
+```scss
+@import 'header';
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+---
+## Vnořování
+Opakují se selektory? Přehlednost?
+
+```scss
+ul.menu {
+    list-style-type: none;
+    &, li {
+        padding: 0;
+    }
+}
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```css
+/* zkompilované CSS */
+ul.menu {
+    list-style-type: none;
+}
+ul.menu, ul.menu li {
+    padding: 0;
+}
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+---
+## Mixiny
+Opakují se kousky kódu?
+
+**1. definice**
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```scss
+@mixin list-inline {
+    list-style-type: none;
+    &, & li {
+        margin: 0;
+        padding: 0;
+        display: inline;
+    }
+}
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+**2. použití**
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+```scss
+ul.menu {
+    @include list-inline;
+}
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+---
+## Dědičnost
+Jeden prvek vychází z druhého?
+
+**1. rodič**
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```scss
+.message {
+    padding: 20px;
+    border: 2px solid #ccc;
+}
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+**2. potomek**
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+```scss
+.error {
+    @extends .message;
+    border-color: red;
+}
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+---
+## Matematika
+= Někdy je lepší zapsat výpočet, než výsledek.
+
+```scss
+.left {
+    width: 5/12 * 100%;
+}
+.right {
+    width: 7/12 * 100%;
+}
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```css
+/* zkompilované CSS */
+.left {
+    width: 41.66667%;
+}
+.right {
+    width: 58.33333%;
+}
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+---
+## [Funkce](http://sass-lang.com/documentation/Sass/Script/Functions.html)
+= Transformují parametry.
+
+```scss
+.error {
+    background-color: fade-out(desaturate(red, 50%), 0.2);
+}
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```css
+/* zkompilované CSS */
+.error {
+    background-color: rgba(191, 64, 64, 0.8);
+}
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+--- <!-- .slide: data-background="rgb(80, 40, 160)" -->
 # Hands-on!
 `examples/sass`
 
-=== <!-- .slide: data-background="rgb(80, 40, 160)" -->
+=== <!-- .slide: data-background="rgb(40, 220, 220)" -->
+# Gulp
+
+---
+= Automatizace opakujících se úkolů.
+<ul class="fragment">
+    <li>kompilace SASS</li>
+    <li>prefixování</li>
+    <li>minifikace a spojování JS</li>
+    <li>kopírování souborů sem tam</li>
+</ul>
+
+---
+## Co nabízí Gulp?
+- `gulp.task(name, deps, fn)` – vytvoří úkol
+- `gulp.src(globs)` – vytvoří rouru
+- `gulp.dest(path)` – zapíše výsledek
+- `gulp.watch(globs, task)` – při změně spustí úkol
+
+---
+## `gulpfile.js`
+```js
+var gulp = require('gulp');
+
+gulp.task('default', [], function () {
+    // do something cool
+});
+```
+
+```bash
+$ gulp
+$ gulp default
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+---
+## Pluginy
+= NPM balíčky, používají se jako JS funkce (*v rouře - pipe*).
+
+- `gulp-sass`
+- `gulp-autoprefixer`
+- `gulp-concat`
+- `gulp-uglify`
+- `gulp-sourcemaps`
+- `browser-sync`
+
+```bash
+$ npm install --save-dev gulp-sass
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+---
+## Kompilace SASS
+```js
+var gulp = require('gulp');
+var sass = require('gulp-sass');   // load plugin
+```
+```js
+gulp.task('css', [], function () {
+    gulp.src('styles.scss')        // get source
+        .pipe(sass())              // pipe to plugin
+        .pipe(gulp.dest('out'));   // pipe to output
+});
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+```js
+gulp.task('watch', ['css'], function () {
+    gulp.watch('*.scss', 'css');   // run "css" task on file change
+});
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+```bash
+$ gulp watch
+```
+<!-- .element: class="fragment" data-fragment-index="3" -->
+
+--- <!-- .slide: data-background="rgb(80, 40, 160)" -->
 # Hands-on!
 `examples/gulp`
 
-=== <!-- .slide: data-background="rgb(80, 40, 160)" -->
+=== <!-- .slide: data-background="rgb(40, 220, 220)" -->
+# HTML5
+
+--- <!-- .slide: data-background="rgb(80, 40, 160)" -->
 # Hands-on!
 `examples/svg`
 
-=== <!-- .slide: data-background="rgb(80, 40, 160)" -->
+=== <!-- .slide: data-background="rgb(40, 220, 220)" -->
+# Bootstrap
+
+--- <!-- .slide: data-background="rgb(80, 40, 160)" -->
 # Hands-on!
 `examples/bootstrap`
 
 ===
-
 # Zdroje obrázků
 - http://www.telerik.com/blogs/announcing-the-beta-release-of-the-telerik-mobile-cloud-testing-platform
