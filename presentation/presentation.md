@@ -526,6 +526,186 @@ $ gulp watch
 === <!-- .slide: data-background="rgb(40, 220, 220)" -->
 # HTML5
 
+---
+## Stručně, prosím!
+---
+### Doctype
+```html
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+```
+↓
+```html
+<!DOCTYPE html>
+```
+---
+### Skripty
+Výchozí `type="text/javascript"`.
+```html
+<script src="script.js" type="text/javascript"></script>
+```
+↓
+```html
+<script src="script.js"></script>
+```
+---
+### Styly
+Výchozí `type="text/css"`.
+```html
+<link rel="stylesheet" href="style.css" type="text/css">
+```
+↓
+```html
+<link rel="stylesheet" href="style.css">
+```
+---
+### Styly \#2
+Výchozí `type="text/css"`.
+```html
+<style type="text/css"></style>
+```
+↓
+```html
+<style></style>
+```
+
+---
+## Sémantické tagy
+- `<nav>` – jakákoliv navigace
+- `<header>` – hlavička dokumentu nebo bloku
+- `<footer>` – patička dokumentu nebo bloku
+- `<article>` – nezávislý blok obsahu
+- `<aside>` – sidebar
+- a další ...
+
+---
+## Vlastní atributy
+`data-xxx="yyy"`
+
+```html
+<em data-tooltip="Help text...">Do an action!</em>
+```
+
+---
+## Formuláře
+
+---
+### Nové typy
+- `email` – <span class="green">OK</span>
+- `number` – <span class="green">OK</span>
+- `range` – <span class="yellow">OK</span>
+- `date` – [**!!!**](http://caniuse.com/#feat=input-datetime)
+- `color` – [**!!!**](http://caniuse.com/#feat=input-color)
+- a další – **!!!**
+
+---
+### Nové atributy
+- `placeholder` – <span class="green">OK</span>
+- `required` – <span class="green">OK</span>
+- `min`, `max`, `step` – <span class="yellow">OK</span>
+- `multiple` – <span class="yellow">OK</span>
+- `autofocus` – <span class="yellow">OK</span>
+
+---
+## Audio
+```html
+<audio>
+    <source src="song.mp3" type="audio/mpeg">
+    Sorry, no audio for you.
+</audio>
+```
+
+---
+## Video
+```html
+<video>
+    <source src="movie.webm" type="video/webm">
+    <source src="movie.mp4" type="video/mp4"> <!-- H.264 -->
+    Sorry, no video for you.
+</video>
+```
+
+---
+### Dostupné atributy
+- `controls` – ovládání
+- `muted`
+- `autoplay`
+- `loop`
+- `poster` (video) – obrázek před spuštěním přehrávání
+- `width`, `height` (video) – rozměry
+
+---
+### Typické použití
+= `<video>` + vlastní JS přehrávač.
+
+---
+## Canvas
+= Kontejner pro grafiku kreslenou pomocí JS.
+```html
+<canvas id="drawing">Sorry, no canvas for you.</canvas>
+```
+
+**Po snímcích!**
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+---
+## SVG
+= Scalable Vector Graphics
+
+```html
+<img src="image.svg">
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```css
+div {
+    background-image: url("image.svg");
+}
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+```html
+<svg>
+    ...
+</svg>
+```
+<!-- .element: class="fragment" data-fragment-index="3" -->
+
+---
+### Kde vzít SVG?
+- stáhnout z webu
+- nakreslit v Adobe Illustrator, Inkscape, CorelDRAW, ...
+- napsat ručně
+
+---
+#### Píšeme ručně...
+- `<line>` – čára
+- `<circle>` – kruh
+- `<rect>` – obdélník
+- `<text>` – text
+- a další (elipsa, polygon, ...)
+
+---
+#### [Libovolný tvar](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d)
+```html
+<path d="M 100 100 L 300 100 L 200 300 Z" />
+```
+
+---
+#### Skupina
+```html
+<g transform="rotate(-20)">
+    <rect x="0" y="0" height="50" width="100" fill="black" />
+    <text x="0" y="50" fill="white">WOW</text>
+</g>
+```
+
+---
+### Co SVG umí?
+(nápověda: je součástí DOM)
+- CSS animace, transformace, přechody <!-- .element: class="fragment" data-fragment-index="1" -->
+- JS události <!-- .element: class="fragment" data-fragment-index="2" -->
+
 --- <!-- .slide: data-background="rgb(80, 40, 160)" -->
 # Hands-on!
 `examples/svg`
