@@ -5,6 +5,18 @@
 <img src="img/logo.svg" alt="logo" class="main">
 [@tbedrich](https://twitter.com/tbedrich) – [tbedrich.cz](https://tbedrich.cz)
 
+---
+## Co je dnes cílem?
+- poznat *možnosti*
+- zapamatovat si *základní koncepty*
+- zkusit je *použít*
+---
+
+## A co není
+- podat výčet všech možností → *dokumentace*
+- podat objektivní přehled konkurence → *Google*
+- zapamatovat si to → *tato přednáška*
+
 === <!-- .slide: class="section" -->
 # Responzivita
 
@@ -42,8 +54,8 @@ Ale když se stránka nevejde na obrazovku?
 ### nebude to vypadat všude stejně!
 
 ---
-### Největší bolest?
-Obrázky. A řešení?
+### Největší bolestí jsou ...
+... obrázky. A řešení?
 <ul class="fragment">
   <li>`img { max-width: 100%; height: auto; }`</li>
   <li>`<picture>` – viz později</li>
@@ -56,8 +68,6 @@ Obrázky. A řešení?
 
 ===
 <img src="img/css3.svg" alt="CSS3" class="main">
---- <!-- .slide: data-background="rgb(0, 0, 0)" -->
-<img src="img/css.png" alt="CSS" class="main">
 
 ---
 ## Media queries
