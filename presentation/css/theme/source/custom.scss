@@ -1,0 +1,200 @@
+/**
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: #222;
+
+$mainFontSize: 38px;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Exo 2', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 500;
+$linkColor: #2a76dd;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 3.5em;
+$heading2Size: 2.2em;
+$heading3Size: 1.4em;
+$heading4Size: 1.2em;
+
+section.has-dark-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.reveal {
+	.slides {
+		text-align: left;
+	}
+	.slides > section,
+	.slides > section > section
+	p,
+	ul {
+		line-height: 1.5;
+	}
+}
+.reveal section {
+	h1 {
+		letter-spacing: -.02em;
+	}
+	blockquote {
+		width: 100%;
+		background-color: rgb(248, 248, 248);
+		border-left: 5px solid rgb(200, 200, 200);
+		padding-left: 1em;
+		box-sizing: border-box;
+	}
+	pre {
+		width: 100%;
+		font-size: 0.65em;
+	}
+	code {
+		white-space: nowrap;
+		padding: .05em .1em;
+		font-size: 90%;
+		color: rgb(199, 37, 78);
+		background-color: rgb(248, 248, 248);
+		border-radius: 4px;
+	}
+	pre code {
+		color: inherit;
+		white-space: inherit;
+		font-size: inherit;
+	}
+	ul {
+		display: block;
+	}
+	img {
+		border: none;
+		box-shadow: none;
+		background: none;
+		display: block;
+	}
+	img.main {
+		margin: .5em auto;
+	}
+	.text-center {
+		text-align: center;
+	}
+    .green {
+      color: green;
+    }
+    .yellow {
+      color: rgb(220, 180, 30);
+    }
+	.red {
+		color: rgb(199, 37, 78);
+	}
+}
+
+// special slides
+.reveal section {
+
+	&.title h1 {
+		font-family: 'Exo 2', Helvetica, sans-serif;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: inherit;
+		font-size: 2.6em;
+		// text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		span {
+			letter-spacing: -.04em;
+			font-size: 2.3em;
+		}
+	}
+
+	&.brand {
+		text-align: center;
+		img {
+			width: 100%;
+			margin-bottom: 0;
+		}
+	}
+
+	&.section h1 {
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&.hands-on code {
+		font-size: 1.5em;
+		background-color: rgba(0, 0, 0, 0.2);
+		color: white;
+	}
+
+	// CSS animations
+	.animated code {
+		@keyframes example {
+			0%   { background-color: red; }
+			25%  { background-color: yellow; }
+			50%  { background-color: orange; }
+			100% { background-color: white; }
+		}
+		animation: example 5s linear 2s infinite alternate;
+	}
+
+	// CSS fonts
+	@import 'https://fonts.googleapis.com/css?family=Allura';
+
+	// HTML5 inputs
+	&.inputs table {
+		width: 100%;
+		td {
+			border-bottom: 1px solid lightgrey;
+		}
+		input {
+			position: relative;
+			top: -.4em;
+		}
+	}
+
+	// Bootstrap color list
+	.list-colored {
+		list-style-type: none;
+		margin-left: 0;
+		li {
+			padding-left: .3em;
+		}
+		.bg-primary {
+		  color: #fff;
+		  background-color: #337ab7;
+		}
+		.bg-success {
+		  background-color: #dff0d8;
+		}
+		.bg-info {
+		  background-color: #d9edf7;
+		}
+		.bg-warning {
+		  background-color: #fcf8e3;
+		}
+		.bg-danger {
+		  background-color: #f2dede;
+		}
+	}
+}
